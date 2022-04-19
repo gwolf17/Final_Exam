@@ -1,0 +1,53 @@
+﻿@{
+}
+
+<!--Model-->
+@model Quote
+
+<h2>Enter a New Quote</h2>
+<br />
+
+<!--Add Quote form-->
+<form method="post">
+
+    <!--Quote ID-->
+    <div class="form-group">
+        <label>Quote ID</label>
+        <input class="form-control" disabled value="@Model.QuoteID" />  <!--Disabled so the user can't change it-->
+    </div>
+
+    <!--Quote-->
+    <div class="form-group">
+        <label asp-for="QuoteMessage">Quote</label>
+        <input class="form-control" asp-for="QuoteMessage" />
+    </div>
+
+    <!--Author-->
+    <div class="form-group">
+        <label asp-for="Author">Author</label>
+        <input class="form-control" asp-for="Author" />
+    </div>
+
+    <!--Date-->
+    <div class="form-group">
+        <label asp-for="Date">Date</label>
+        <input class="form-control" asp-for="Date" />
+    </div>
+
+    <!--Subject-->
+    <div class="form-group">
+        <label asp-for="Subject">Subject</label>
+        <input class="form-control" asp-for="Subject" />
+    </div>
+
+    <!--Citation-->
+    <div class="form-group">
+        <label asp-for="Citation">Citation</label>
+        <input class="form-control" asp-for="Citation" />
+    </div>
+
+    <!--Submit and cancel buttons-->
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a class="btn btn-secondary" href="/">Cancel</a>
+
+</form>

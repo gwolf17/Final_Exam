@@ -1,0 +1,27 @@
+﻿@{
+}
+
+<!--Bring in the model-->
+@model Quote
+
+<h2>Details</h2>
+<br />
+
+<table class="table table-sm table-striped">
+    <tbody>
+        <tr><th>Quote ID:</th>@Model.QuoteID</tr>
+        <tr><th>Quote:</th>@Model.QuoteMessage</tr>
+        <tr><th>Author:</th>@Model.Author</tr>
+        <tr><th>Date:</th>@Model.Date</tr>
+        <tr><th>Subject:</th>@Model.Subject</tr>
+        <tr><th>Citation:</th>@Model.Citation</tr>
+    </tbody>
+</table>
+
+<!--Edit and delete buttons-->
+<a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-quoteid="@Model.QuoteID">Edit</a>
+<a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-quoteid="@Model.QuoteID">Delete</a>
+
+<br /><br />
+<!--Button to return to home page-->
+<a class="btn btn-light" href="/">Home</a>

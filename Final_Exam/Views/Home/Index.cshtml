@@ -2,4 +2,34 @@
     ViewData["Title"] = "Home Page";
 }
 
+<!--Bring in the model-->
+@model List<Quote>
 
+<h1>Favorite Quotes</h1>
+<br />
+
+<!--Create a card block to display each quote in the database-->
+<div>
+    @foreach (var q in Model)
+    {
+        <div class="card border-info m-1 p-1">
+
+            <div class="card-body">
+
+                <!--Quote-->
+                <div class="card-text">
+                    <h3>@q.QuoteMessage</h3>
+                </div>
+
+                <!--Author-->
+                <h4>- @q.Author</h4>
+
+                <!--Detalis button-->
+                <span style="float:right">
+                    <a asp-controller="Home" asp-action="Details" asp-route-quoteid="@q.QuoteID">Details</a>
+                </span>
+            </div>
+
+        </div>
+    }
+</div>

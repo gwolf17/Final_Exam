@@ -1,6 +1,8 @@
+using Final_Exam.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +26,15 @@ namespace Final_Exam
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //Add database
+            services.AddDbContext<QuoteDBContext>(options =>
+            {
+                options.UseSqlite(Configuration["ConnectionStrings:QuoteDBConnection"]);
+            });
+
+            //Add repositories
+            services.AddScoped<IQuoteRepository, EFQuoteRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
