@@ -32,7 +32,7 @@ namespace Final_Exam.Controllers
         //Details page
         public IActionResult Details(int quoteid)
         {
-            var data = _repo.Quotes.Single(x => x.QuoteID == quoteid);
+            var data = _repo.Quotes.FirstOrDefault(x => x.QuoteID == quoteid);
 
             return View(data);
         }
@@ -41,7 +41,7 @@ namespace Final_Exam.Controllers
         [HttpGet]
         public IActionResult Edit(int quoteid)
         {
-            var data = _repo.Quotes.Single(x => x.QuoteID == quoteid);
+            var data = _repo.Quotes.FirstOrDefault(x => x.QuoteID == quoteid);
 
             return View(data);
         }
@@ -49,10 +49,16 @@ namespace Final_Exam.Controllers
         [HttpPost]
         public IActionResult Edit(Quote q)
         {
-            //Call edit method in the repository
-            _repo.EditQuote(q);
-
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                //Call edit method in the repository
+                _repo.EditQuote(q);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         //Create functionality
@@ -66,10 +72,16 @@ namespace Final_Exam.Controllers
         [HttpPost]
         public IActionResult Add(Quote q)
         {
-            //Call Create repository method
-            _repo.AddQuote(q);
-
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                //Call Create repository method
+                _repo.AddQuote(q);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         //Delete functionality
@@ -80,6 +92,14 @@ namespace Final_Exam.Controllers
             _repo.DeleteQuote(q);
 
             return RedirectToAction("Index");
+        }
+
+        //Pull up a random quote
+        public IActionResult Random()
+        {
+            var data = _repo.Quotes.RandomSample(1);
+
+            return View();
         }
     }
 }

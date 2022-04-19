@@ -18,15 +18,15 @@
 
                 <!--Quote-->
                 <div class="card-text">
-                    <h3>@q.QuoteMessage</h3>
+                    <h4>@q.QuoteMessage</h4>
                 </div>
 
                 <!--Author-->
-                <h4>- @q.Author</h4>
+                <h5>- @q.Author</h5>
 
                 <!--Detalis button-->
-                <span style="float:right">
-                    <a asp-controller="Home" asp-action="Details" asp-route-quoteid="@q.QuoteID">Details</a>
+                <span style="float:right" class="btn btn-sm btn-info">
+                    <a class="text-white" asp-controller="Home" asp-action="Details" asp-route-quoteid="@q.QuoteID">Details</a>
                 </span>
             </div>
 

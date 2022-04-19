@@ -11,9 +11,9 @@ namespace Final_Exam.Models
         [Key]
         [Required]
         public int QuoteID { get; set; }  //Primary key
-        [Required]
+        [Required(ErrorMessage = "Enter a quote")]
         public string QuoteMessage { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Enter the author")]
         public string Author { get; set; }
         public DateTime Date { get; set; }
         public string Subject { get; set; }
